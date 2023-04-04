@@ -11,32 +11,35 @@ import java.util.List;
 public class ParseIntegers {
 
     private static final List<String> WORDS =
-             Arrays.asList(
+            Arrays.asList(
                     "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
                             .split(" "));
 
     public static void main(String[] args) {
+
+        String justWords = "";
+        int sum = 0;
         Iterator<String> words = null;
         try {
             words = WORDS.iterator();
-        }catch (NumberFormatException e) {System.out.println(e);}
+            while (words.hasNext()) {
+                String next = words.next();
+                int number = 0;
 
-        int sum = 0;
-        String justWords = "";
-        while (words.hasNext()) {
-            String next = words.next();
-            int number = 0;
-            try {
-                number = Integer.parseInt(next);
-            }catch (NumberFormatException e){
-                System.out.println(e);
+                try {
+                    number = Integer.parseInt(next);
+                    sum = sum + number;
+                } catch (NumberFormatException e) {
+                    // Ignore if next is not an integer
+                }
+
+                justWords += next + " ";
             }
-            sum = sum+number;
-            justWords = " "+next;
-            // todo: complete it
+
+        } finally {
+            System.out.println("Sum is " + sum);
+            System.out.println("Just words:" + justWords);
         }
-        System.out.println("Sum is " + sum);
-        System.out.println("Just words:" + justWords);
     }
 }
 

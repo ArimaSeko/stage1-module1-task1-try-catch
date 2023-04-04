@@ -30,16 +30,16 @@ public class ParseIntegers {
                     number = Integer.parseInt(next);
                     sum = sum + number;
                 } catch (NumberFormatException e) {
-                    // Ignore if next is not an integer
+                    justWords += next + " ";
                 }
 
-                justWords += next + " ";
             }
 
         } finally {
             System.out.println("Sum is " + sum);
-            System.out.println("Just words:" + justWords);
+            System.out.println("Just words: " + justWords);
         }
     }
 }
+
 

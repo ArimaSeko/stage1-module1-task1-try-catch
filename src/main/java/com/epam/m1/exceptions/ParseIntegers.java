@@ -11,12 +11,16 @@ import java.util.List;
 public class ParseIntegers {
 
     private static final List<String> WORDS =
-            Arrays.asList(
+             Arrays.asList(
                     "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
                             .split(" "));
 
     public static void main(String[] args) {
-        Iterator<String> words = WORDS.iterator();
+        Iterator<String> words = null;
+        try {
+            words = WORDS.iterator();
+        }catch (NumberFormatException e) {System.out.println(e);}
+
         int sum = 0;
         String justWords = "";
         while (words.hasNext()) {
